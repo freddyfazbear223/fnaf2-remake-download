@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Five Nights at Freddy's 2 | Fan Remake</title>
+  <meta name="description" content="Download the Windows build of the Five Nights at Freddy's 2 Godot fan remake by huigvc.">
+  <link rel="icon" href="icon.jpg" type="image/jpeg">
+  <style>
+    @font-face {
+      font-family: OCR;
+      src: url(ocr-a.ttf) format("truetype");
+      font-display: swap;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      background: #080808;
+      color: #fff;
+      font-family: OCR, monospace;
+    }
+    main {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      min-height: 70vh;
+      place-items: center;
+      overflow: hidden;
+      padding: 24px;
+    }
+    main::before, main::after {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      pointer-events: none;
+    }
+    main::before {
+      background: linear-gradient(90deg, #080808 6%, #08080855 48%, #08080818 100%),
+        url(cast.png) center right / auto 100% no-repeat;
+      opacity: .72;
+    }
+    main::after {
+      background: repeating-linear-gradient(0deg, #ffffff0b 0 1px, transparent 1px 4px);
+    }
+    h1 {
+      position: absolute;
+      top: clamp(22px, 6vh, 64px);
+      left: clamp(22px, 7vw, 88px);
+      margin: 0;
+    }
+    h1 img { display: block; width: clamp(125px, 20vw, 265px); height: auto; }
+    .action { text-align: center; padding-top: 70px; }
+    .download {
+      display: inline-block;
+      padding: 16px 25px;
+      background: #fff;
+      color: #090909;
+      text-decoration: none;
+      font-size: clamp(17px, 3vw, 24px);
+    }
+    .download:hover { background: #dedede; }
+    .download:focus-visible { outline: 2px solid white; outline-offset: 6px; }
+    .action p { margin: 14px 0 0; color: #ddd; text-shadow: 0 2px 4px black; }
+    footer {
+      padding: 20px 24px 24px;
+      color: #bfbfbf;
+      text-align: right;
+      line-height: 1.7;
+      font-size: 13px;
+    }
+    @media (max-width: 500px) {
+      main::before { background-position: center, 70% center; }
+      footer { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1><img src="title.png" alt="Five Nights at Freddy's 2"></h1>
+    <div class="action">
+      <a class="download" href="https://github.com/freddyfazbear223/fnaf2-remake-download/releases/download/v1.0/FNaF2-Windows.exe">Download for Windows</a>
+      <p>Fan remake</p>
+    </div>
+  </main>
+  <footer>
+    Original game by Scott Cawthon<br>
+    Godot fan remake by huigvc
+  </footer>
+</body>
+</html>
