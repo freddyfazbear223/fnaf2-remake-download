@@ -17,7 +17,7 @@
       min-height: 100svh;
       margin: 0;
       display: grid;
-      grid-template-rows: 1fr auto;
+      grid-template-rows: 1fr auto auto;
       background: #080808;
       color: #fff;
       font-family: OCR, monospace;
@@ -55,16 +55,33 @@
     h1 img { display: block; width: clamp(125px, 20vw, 265px); height: auto; }
     .action { text-align: center; padding-top: 70px; }
     .download {
-      display: inline-block;
-      padding: 16px 25px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 54px;
+      padding: 12px 22px;
+      border: 1px solid white;
       background: #fff;
       color: #090909;
       text-decoration: none;
-      font-size: clamp(17px, 3vw, 24px);
+      font: inherit;
+      font-size: clamp(17px, 3vw, 22px);
     }
-    .download:hover { background: #dedede; }
-    .download:focus-visible { outline: 2px solid white; outline-offset: 6px; }
+    a.download:hover { background: #090909; color: #fff; }
+    .download:focus-visible { outline: 2px solid white; outline-offset: 5px; }
+    .download[disabled] { cursor: default; }
+    .download svg { width: 19px; height: 19px; }
     .action p { margin: 14px 0 0; color: #ddd; text-shadow: 0 2px 4px black; }
+    .updates {
+      width: min(660px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 30px 0;
+      border-top: 1px solid #414141;
+      line-height: 1.6;
+    }
+    .updates h2 { margin: 0 0 16px; font-size: 22px; font-weight: normal; }
+    .updates h3 { margin: 0 0 6px; font-size: 16px; font-weight: normal; }
+    .updates p { margin: 0 0 15px; color: #bfbfbf; font-size: 14px; }
     footer {
       padding: 20px 24px 24px;
       color: #bfbfbf;
@@ -82,10 +99,22 @@
   <main>
     <h1><img src="title.png" alt="Five Nights at Freddy's 2"></h1>
     <div class="action">
-      <a class="download" href="https://github.com/freddyfazbear223/fnaf2-remake-download/releases/download/v1.0/FNaF2-Windows.exe">Download for Windows</a>
-      <p>Fan remake</p>
+      <button class="download" type="button" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/>
+        </svg>
+        Download for Windows
+      </button>
+      <p>Windows build temporarily unavailable</p>
     </div>
   </main>
+  <section class="updates" aria-labelledby="updates-title">
+    <h2 id="updates-title">Update log</h2>
+    <h3>Windows launch fix in progress</h3>
+    <p>The previous build could fail to open on another PC. A replacement is being built and tested.</p>
+    <h3>v1.0 &middot; Initial release</h3>
+    <p>Nights 1&ndash;6, working camera and music box controls, controller support, and a 6 AM results screen.</p>
+  </section>
   <footer>
     Original game by Scott Cawthon<br>
     Godot fan remake by huigvc
