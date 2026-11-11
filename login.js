@@ -17,7 +17,8 @@ try {
     user = sess?.user;
     btn.textContent = user ? "Sign out" : "Sign in with Discord";
     const meta = user?.user_metadata;
-    label.textContent = user ? "Signed in as " + (meta?.user_name || meta?.preferred_username || meta?.name || "Discord user") : "";
+    const name = (meta?.user_name || meta?.preferred_username || meta?.name || "Discord user").replace(/#0$/, "");
+    label.textContent = user ? "Signed in as " + name : "";
     label.hidden = !user;
     btn.disabled = false;
   });
