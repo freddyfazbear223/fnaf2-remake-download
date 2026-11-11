@@ -67,7 +67,9 @@
     .download {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
+      width: min(310px, calc(100vw - 52px));
       min-height: 54px;
       padding: 12px 22px;
       border: 1px solid white;
@@ -92,21 +94,13 @@
       transform: translateX(0);
     }
     .clips { color: white; text-underline-offset: 4px; }
-    #login button {
-      background: #5865f2;
-      border: 0;
-      color: white;
-      cursor: pointer;
-      font: inherit;
-      padding: 9px 14px;
-    }
-    #login button:focus-visible { outline: 2px solid white; outline-offset: 4px; }
     @media (prefers-reduced-motion: reduce) {
       main::before, .action { animation: none; }
       .download::before { transition: none; }
     }
     .download:focus-visible { outline: 2px solid white; outline-offset: 5px; }
     .download svg { width: 19px; height: 19px; }
+    .android { margin-top: 14px; }
     .action p { margin: 14px 0 0; color: #ddd; text-shadow: 0 2px 4px black; }
     .updates {
       width: min(660px, calc(100% - 48px));
@@ -130,8 +124,13 @@
       footer { text-align: center; }
     }
   </style>
+  <link rel="stylesheet" href="./owner.css">
 </head>
 <body>
+  <div id="login">
+    <button type="button" id="discord" disabled><span class="discord-icon" aria-hidden="true"></span><span id="signin">Sign in</span></button>
+    <p id="account" role="status" hidden></p>
+  </div>
   <main>
     <h1><img src="title.png" alt="Five Nights at Freddy's 2"></h1>
     <p id="players" hidden></p>
@@ -142,16 +141,21 @@
         </svg>
         Download for Windows
       </a>
-      <p><a class="download" href="https://github.com/freddyfazbear223/fnaf2-remake-download/releases/download/v1.7/FNaF2-Android.apk">Download for Android</a></p>
+      <div class="android"><a class="download" href="https://github.com/freddyfazbear223/fnaf2-remake-download/releases/download/v1.7/FNaF2-Android.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg> Download for Android</a></div>
       <p><a class="clips" href="clips.html">Community clips</a></p>
-      <div id="login">
-        <button type="button" id="discord" disabled>Sign in with Discord</button>
-        <p id="account" role="status" hidden></p>
-      </div>
     </div>
   </main>
   <section class="updates" aria-labelledby="updates-title">
     <h2 id="updates-title">Update log</h2>
+    <button type="button" id="editlogs" hidden>Edit update log</button>
+    <form id="logform" hidden>
+      <label for="logbody">Put each title on its own line, followed by its notes. Separate entries with a blank line.</label>
+      <textarea id="logbody" rows="14" maxlength="16000" required></textarea>
+      <button type="submit">Save update log</button>
+      <button type="button" id="cancellog">Cancel</button>
+      <p id="logmsg" role="status"></p>
+    </form>
+    <div id="loglist">
     <h3>v1.7 &middot; Live player count</h3>
     <p>See how many Windows and Android players are in a night right now.</p>
     <h3>v1.6 &middot; Player setup and office updates</h3>
@@ -174,6 +178,7 @@
     <p>Fixed the Windows launch error. Added office ambience and distant sounds.</p>
     <h3>v1.0 &middot; Initial release</h3>
     <p>Six nights, controller support, and a 6 AM results screen.</p>
+    </div>
   </section>
   <footer>
     Original game by Scott Cawthon<br>
@@ -207,6 +212,6 @@
     };
     refresh();
   </script>
-  <script type="module" src="./login.js?v=2"></script>
+  <script type="module" src="./login.js?v=3"></script>
 </body>
 </html>

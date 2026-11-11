@@ -6,9 +6,14 @@
   <title>Community clips | FNaF 2 Fan Remake</title>
   <link rel="icon" href="icon.jpg" type="image/jpeg">
   <link rel="stylesheet" href="clips.css">
-  <script src="clips.js" defer></script>
+  <link rel="stylesheet" href="./owner.css">
+  <script type="module" src="./clips.js?v=2"></script>
 </head>
 <body>
+  <div id="login">
+    <button type="button" id="discord" disabled><span class="discord-icon" aria-hidden="true"></span><span id="signin">Sign in</span></button>
+    <p id="account" role="status" hidden></p>
+  </div>
   <header>
     <a href="./" aria-label="Back to downloads"><img src="title.png" alt="Five Nights at Freddy's 2"></a>
     <nav><a href="./">Download</a><a href="#submit">Submit a clip</a></nav>
@@ -24,15 +29,13 @@
       <h2 id="upload-title">Submit your night</h2>
       <p>In the game, open Replays and turn Record nights on before playing. After the night, wait for Replay saved, then open the recordings folder.</p>
       <form id="form">
-        <label for="nick">Display name</label>
-        <input id="nick" name="nick" maxlength="24" autocomplete="nickname" required>
         <label for="title">Clip title</label>
         <input id="title" name="title" maxlength="80" placeholder="Survived Night 3 with no battery" required>
         <label for="file">Recording</label>
         <input id="file" name="file" type="file" accept="video/mp4,.mp4" required aria-describedby="limit">
         <p id="limit">MP4, up to 40 MB. The gallery has room for 20 clips.</p>
         <video id="preview" controls playsinline preload="metadata" hidden aria-label="Your clip preview"></video>
-        <label class="check"><input id="public" type="checkbox" required> Publish this clip with my display name for everyone to watch.</label>
+        <label class="check"><input id="public" type="checkbox" required> Publish this clip with my Discord username for everyone to watch.</label>
         <button class="send" id="send" type="submit">Upload clip</button>
         <p id="message" role="status"></p>
       </form>

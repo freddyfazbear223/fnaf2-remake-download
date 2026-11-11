@@ -1,0 +1,47 @@
+#login {
+  position: absolute;
+  z-index: 2;
+  right: 16px;
+  top: 14px;
+  text-align: right;
+}
+#login button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background: #424dcc;
+  border: 1px solid #747cff;
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
+  padding: 8px 12px;
+}
+.discord-icon {
+  width: 20px;
+  height: 20px;
+  background: center / contain no-repeat url("https://cdn.simpleicons.org/discord/FFFFFF");
+}
+#account {
+  max-width: 240px;
+  margin: 4px 0 0;
+  padding: 4px;
+  color: white;
+  background: #151515;
+  font-size: 12px;
+}
+#logform textarea {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px 0;
+  font: inherit;
+}
+.cliptools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+body:has(#login) > header { padding-right: 156px; }
+@media (max-width: 620px) {
+  body:has(#login) > header { padding-top: 60px; padding-right: 0; }
+}
