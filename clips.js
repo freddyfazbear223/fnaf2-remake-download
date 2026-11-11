@@ -77,7 +77,10 @@ form.addEventListener("submit", async (ev) => {
     return;
   }
   const nick = document.getElementById("nick").value.trim();
-  const title = document.getElementById("title").value.trim();
+  let title = document.getElementById("title").value.trim();
+  if (title && /^night-.*-AI\.mp4$/i.test(clip.name) && !/^\[AI\] /i.test(title)) {
+    title = `[AI] ${title}`.slice(0, 80);
+  }
   if (!nick || !title || !document.getElementById("public").checked) {
     msg.textContent = "Enter your name and title, and confirm you want to publish.";
     return;

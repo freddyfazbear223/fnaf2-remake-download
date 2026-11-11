@@ -42,9 +42,19 @@
       background: linear-gradient(90deg, #080808 6%, #08080855 48%, #08080818 100%),
         url(cast.png) center right / auto 100% no-repeat;
       opacity: .72;
+      animation: flicker 9s steps(1, end) infinite;
     }
     main::after {
       background: repeating-linear-gradient(0deg, #ffffff0b 0 1px, transparent 1px 4px);
+    }
+    @keyframes flicker {
+      0%, 89%, 93%, 100% { opacity: .72; }
+      90%, 92% { opacity: .43; }
+      91% { opacity: .62; }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     h1 {
       position: absolute;
@@ -53,7 +63,7 @@
       margin: 0;
     }
     h1 img { display: block; width: clamp(125px, 20vw, 265px); height: auto; }
-    .action { text-align: center; padding-top: 70px; }
+    .action { text-align: center; padding-top: 70px; animation: fade-in .45s ease-out both; }
     .download {
       display: inline-flex;
       align-items: center;
@@ -67,7 +77,25 @@
       font: inherit;
       font-size: clamp(17px, 3vw, 22px);
     }
-    a.download:hover { background: #090909; color: #fff; }
+    .download { position: relative; }
+    .download::before {
+      content: ">>";
+      position: absolute;
+      right: calc(100% + 12px);
+      color: white;
+      opacity: 0;
+      transform: translateX(-5px);
+      transition: opacity .15s, transform .15s;
+    }
+    .download:is(:hover, :focus-visible)::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .clips { color: white; text-underline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      main::before, .action { animation: none; }
+      .download::before { transition: none; }
+    }
     .download:focus-visible { outline: 2px solid white; outline-offset: 5px; }
     .download svg { width: 19px; height: 19px; }
     .action p { margin: 14px 0 0; color: #ddd; text-shadow: 0 2px 4px black; }
@@ -105,17 +133,17 @@
         Download for Windows
       </a>
       <p>Windows 64-bit</p>
-      <p><a href="clips.html" style="color: white; text-underline-offset: 5px">Watch / Submit clips</a></p>
+      <p><a class="clips" href="clips.html">Community clips</a></p>
     </div>
   </main>
   <section class="updates" aria-labelledby="updates-title">
     <h2 id="updates-title">Update log</h2>
-    <h3>v1.2 &middot; Night replays and office balance</h3>
-    <p>Record full nights with game audio and share them on Community clips. Added office blackouts and vent warnings, and corrected camera-triggered attacks.</p>
+    <h3>v1.2 &middot; AI Player and replays</h3>
+    <p>Let the AI play a night, or pick Easy AI Win for a guaranteed clear. AI runs stay off the leaderboard. Record and share full nights.</p>
     <h3>v1.1 &middot; Windows launch fix</h3>
-    <p>Fixed a launch error on other PCs and added office fear ambience and distant sound cues.</p>
+    <p>Fixed the Windows launch error. Added office ambience and distant sounds.</p>
     <h3>v1.0 &middot; Initial release</h3>
-    <p>Nights 1&ndash;6, working camera and music box controls, controller support, and a 6 AM results screen.</p>
+    <p>Six nights, controller support, and a 6 AM results screen.</p>
   </section>
   <footer>
     Original game by Scott Cawthon<br>
